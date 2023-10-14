@@ -1,0 +1,78 @@
+// Define colors for Pokémon types
+$normal-color: #a8a878;
+$fire-color: #f08030;
+$water-color: #6890f0;
+$grass-color: #78c850;
+$electric-color: #f8d030;
+$ice-color: #98d8d8;
+$fighting-color: #e57373;
+$poison-color: #a040a0;
+$ground-color: #e0c068;
+$flying-color: #a890f0;
+$psychic-color: #f85888;
+$bug-color: #a8b820;
+$rock-color: #b8a038;
+$ghost-color: #705898;
+$dark-color: #705848;
+$steel-color: #b8b8d0;
+$fairy-color: #ee99ac;
+
+// Map Pokémon types to their respective colors
+$type-colors: (
+    normal: $normal-color,
+    fire: $fire-color,
+    water: $water-color,
+    grass: $grass-color,
+    electric: $electric-color,
+    ice: $ice-color,
+    fighting: $fighting-color,
+    poison: $poison-color,
+    ground: $ground-color,
+    flying: $flying-color,
+    psychic: $psychic-color,
+    bug: $bug-color,
+    rock: $rock-color,
+    ghost: $ghost-color,
+    dark: $dark-color,
+    steel: $steel-color,
+    fairy: $fairy-color,
+);
+
+// Function to get the color for a specific type
+@function get-type-color($type) {
+    @return map-get($type-colors, $type);
+}
+
+@each $type, $color in $type-colors {
+    .#{$type}-type {
+        background-color: get-type-color(#{$type});
+        color: white;
+    }
+}
+
+.pokemon-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    height: 16rem;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid blue;
+}
+
+.pokemon-image {
+    width: 100%;
+    height: 5rem;
+    object-fit: fill;
+    border: 2px solid blue;
+}
+
+ion-card-title,
+ion-card-subtitle {
+    font-size: 1.5rem;
+}
+
+ion-card-content {
+    padding: 10px;
+}

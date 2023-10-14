@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Pokedex
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,8 +13,21 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <swiper-container
+  [pagination]="true"
+  (slidechange)="swiperSlideChange($event)"
+  >
+    <swiper-slide>
+      <ion-grid>
+        <ion-row *ngIf="!loading">
+          <ion-col *ngFor="let pokemon of pokemons">
+            <pokemon-card [pokemon]="pokemon"></pokemon-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </swiper-slide>
+    <swiper-slide>Slide 2</swiper-slide>
+    <swiper-slide>Slide 3</swiper-slide>
+  </swiper-container>
+
 </ion-content>
