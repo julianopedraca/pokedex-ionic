@@ -1,31 +1,35 @@
 import { map, mergeMap, of, reduce, toArray } from 'rxjs';
 import { PokemonDto } from '../dto/pokemon.dto';
-import { PokemonListarDto } from './../dto/pokemon-listar.dto';
-import { PokeapiService } from './../services/pokeapi.service';
-import { Component, OnInit } from '@angular/core';
+import { PokemonListarDto } from '../dto/pokemon-listar.dto';
+import { PokeapiService } from '../services/pokeapi.service';
+import {  Component, OnInit } from '@angular/core';
 import { PokemonListarResumoDto } from '../dto/pokemon-listar-resumo.dto';
 import { register } from 'swiper/element/bundle';
 
 register();
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'pokedex',
+  templateUrl: './pokedex.html',
+  styleUrls: ['./pokedex.scss'],
 })
-export class HomePage implements OnInit{
+export class Pokedex implements OnInit{
   dto?: PokemonListarDto = {};
 
-  pokemons: PokemonDto[] = [];
+  pokemonsAll: PokemonDto[] = [];
+
+  pokemonsShow: PokemonDto[] = [];
 
   loading = true
 
+  currentPage: number = 1;
+
   constructor(private pokeapiService: PokeapiService) {
   }
-
+  
   ngOnInit(): void {
     this.fetchPokemons()
   }
-
+    
   fetchPokemons(){
     this.pokeapiService
       .listarAll()
@@ -39,23 +43,27 @@ export class HomePage implements OnInit{
             name: pokeData.name,
             weight: pokeData.weight,
             sprites: pokeData.sprites.other.dream_world.front_default,
-            height: pokeData.weight,
+            height: pokeData.height,
             types: pokeData.types,
           })
         }),
         toArray(),
         map((pokemons: PokemonDto[]) => {
-          this.pokemons = pokemons;
+          this.pokemonsAll = pokemons;
           return pokemons;
         })
       )
       .subscribe((pokemonDto: PokemonDto[]) => {
+        this.pokemonsShow = this.pokemonsAll.slice(0,6)
         this.loading = false
       });
   }
-
-  swiperSlideChange(e:any){
-    console.log('changed', e);
-    
+  
+  changePage(page: number) {
+    this.currentPage = page;
+    page = page - 1;
+    this.pokemonsShow = this.pokemonsAll.slice(page*6,page*6+6)
+    console.log(this.pokemonsShow);
+    console.log(page);
   }
 }

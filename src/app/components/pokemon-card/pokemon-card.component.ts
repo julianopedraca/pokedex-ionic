@@ -13,8 +13,6 @@ export class PokemonCardComponent  implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.pokemon?.types[0].type.name);
-    
   }
 
 }

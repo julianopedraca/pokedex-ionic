@@ -22,7 +22,7 @@ export class PokeapiService {
   listarAll(): Observable<PokemonListarResumoDto>{
     let params = new HttpParams()
 
-    params = params.set('offset',0).set('limit',6)
+    params = params.set('offset',0).set('limit',151)
     
     return this.http.get<PokemonListarResumoDto>(`${this.baseUrl}`, { params });
   }
