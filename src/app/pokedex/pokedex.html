@@ -1,42 +1,39 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Pokedex
-    </ion-title>
+    <ion-title> Pokedex </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-searchbar
+  placeholder="Search..."
+  [debounce]="300"
+  (ionInput)="searchPokemon($event)"
+  ></ion-searchbar>
 
-  <div *ngIf="!loading">
-    <swiper-container
-    [pagination]="true"
-    [pagination-dynamic-bullets]="true"
-    >
-      <swiper-slide>
-        <ion-grid>
-          <ion-row >
-            <ion-col *ngFor="let pokemon of pokemonsShow">
-              <pokemon-card [pokemon]="pokemon"></pokemon-card>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </swiper-slide>
-      <swiper-slide></swiper-slide>
-      <swiper-slide></swiper-slide>
-      <swiper-slide></swiper-slide>
-      <swiper-slide></swiper-slide>
-    </swiper-container>
+  <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
+  
+  <div *ngIf="!loading && pokemonsShow.length">
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let pokemon of pokemonsShow">
+          <pokemon-card [pokemon]="pokemon" (click)="openModal(pokemon)"></pokemon-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <paginator
-      [currentPage]="currentPage"
-      [limit]="6"
-      [total]="151"
-      (changePage)="changePage($event)"
+    [currentPage]="currentPage"
+    [limit]="6"
+    [total]="151"
+    (changePage)="changePage($event)"
     ></paginator>
   </div>
+
+  <modal
+    [isModalOpen]="isModalOpen"
+    (isModalOpenChange)="isModalOpen=$event"
+  ></modal>
+  
+  <missing-page *ngIf="!pokemonsShow.length && !loading" ></missing-page>
+
 </ion-content>

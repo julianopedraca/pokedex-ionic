@@ -7,6 +7,8 @@ import { Pokedex } from './pokedex';
 import { HomePageRoutingModule } from './pokedex-routing.module';
 import { PokemonCardComponent } from '@components/pokemon-card/pokemon-card.component';
 import { PaginatorComponent } from '@components/paginator/paginator.component';
+import { MissingPageComponent } from '@components/missing-page/missing-page.component';
+import { ModalComponent } from '@components/modal/modal.component';
 
 
 
@@ -21,6 +23,8 @@ import { PaginatorComponent } from '@components/paginator/paginator.component';
     Pokedex,
     PokemonCardComponent,
     PaginatorComponent,
+    MissingPageComponent,
+    ModalComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
   

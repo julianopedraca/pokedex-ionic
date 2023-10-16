@@ -19,9 +19,11 @@ export class Pokedex implements OnInit{
 
   pokemonsShow: PokemonDto[] = [];
 
-  loading = true
+  loading = true;
 
   currentPage: number = 1;
+
+  isModalOpen: boolean = false;
 
   constructor(private pokeapiService: PokeapiService) {
   }
@@ -58,6 +60,25 @@ export class Pokedex implements OnInit{
         this.loading = false
       });
   }
+
+  searchPokemon(name:any){
+    name = name.target.value.toLowerCase();
+    if (!name){
+      this.pokemonsShow = this.pokemonsAll.slice(0,6)
+      return
+    }
+    this.pokemonsShow = []
+    this.pokeapiService.buscarPokemon(name).subscribe(res => {
+      this.pokemonsShow.push({
+        id: res.id,
+        name: res.name,
+        height: res.height,
+        weight: res.weight,
+        sprites: res.sprites.other.dream_world.front_default,
+        types: res.types
+      })
+    })
+  }
   
   changePage(page: number) {
     this.currentPage = page;
@@ -66,4 +87,10 @@ export class Pokedex implements OnInit{
     console.log(this.pokemonsShow);
     console.log(page);
   }
+
+  openModal(pokemon:PokemonDto){
+    console.log(pokemon);
+    this.isModalOpen = true
+  }
+  
 }

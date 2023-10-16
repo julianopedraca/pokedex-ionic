@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { PokemonDto } from 'src/app/dto/pokemon.dto';
 
 @Component({
@@ -10,9 +10,11 @@ export class PokemonCardComponent  implements OnInit {
 
   @Input() pokemon?: PokemonDto;
 
+  // @ViewChild('bulta') template: ;
+
   constructor() { }
 
   ngOnInit() {
   }
-
+  
 }

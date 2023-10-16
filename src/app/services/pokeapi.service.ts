@@ -19,6 +19,10 @@ export class PokeapiService {
     return this.http.get<PokemonListarResumoDto>(`${url}`);
   }
 
+  buscarPokemon(nome:string): Observable<PokemonListarResumoDto>{
+    return this.http.get<PokemonListarResumoDto>(`${this.baseUrl}${nome}`)
+  }
+
   listarAll(): Observable<PokemonListarResumoDto>{
     let params = new HttpParams()
 
