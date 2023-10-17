@@ -1,14 +1,18 @@
-<ion-modal [isOpen]="isModalOpen">
-  <ng-template>
+<ion-modal
+*ngIf="pokemonData"
+[isOpen]="isModalOpen"
+>
+<ng-template>
+  {{ pokemonData.types[0].type.name }}-type
     <ion-header>
       <ion-toolbar>
-        <ion-title>Modal</ion-title>
+        <ion-title>{{ pokemonData.name | uppercase }}</ion-title>
         <ion-buttons slot="end">
           <ion-button (click)="closeModal()">Close</ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="ion-padding">
+    <ion-content class="ion-padding teste {{ pokemonData.types[0].type.name }}-type" >
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum quidem recusandae ducimus quos
         reprehenderit. Veniam, molestias quos, dolorum consequuntur nisi deserunt omnis id illo sit cum qui. Eaque,

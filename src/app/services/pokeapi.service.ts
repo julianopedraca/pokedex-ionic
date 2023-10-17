@@ -11,7 +11,7 @@ import { PokemonListarResumoDto } from '../dto/pokemon-listar-resumo.dto';
   providedIn: 'root'
 })
 export class PokeapiService {
-  private baseUrl = "https://pokeapi.co/api/v2/pokemon/"
+  private baseUrl = "https://pokeapi.co/api/v2"
 
   constructor(private http:HttpClient) {}
 
@@ -19,8 +19,12 @@ export class PokeapiService {
     return this.http.get<PokemonListarResumoDto>(`${url}`);
   }
 
+  buscarPokemonDescricao(id:number): Observable<PokemonListarResumoDto>{
+    return this.http.get<PokemonListarResumoDto>(`${this.baseUrl}/pokemon-species/${id}`)
+  }
+
   buscarPokemon(nome:string): Observable<PokemonListarResumoDto>{
-    return this.http.get<PokemonListarResumoDto>(`${this.baseUrl}${nome}`)
+    return this.http.get<PokemonListarResumoDto>(`${this.baseUrl}/pokemon/${nome}`)
   }
 
   listarAll(): Observable<PokemonListarResumoDto>{
@@ -28,6 +32,6 @@ export class PokeapiService {
 
     params = params.set('offset',0).set('limit',151)
     
-    return this.http.get<PokemonListarResumoDto>(`${this.baseUrl}`, { params });
+    return this.http.get<PokemonListarResumoDto>(`${this.baseUrl}/pokemon/`, { params });
   }
 }

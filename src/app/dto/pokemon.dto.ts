@@ -3,8 +3,10 @@ export interface PokemonDto {
     name: string;
     height: number;
     weight: number;
+    spritesPixel:string;
     sprites: string;
     types: Types[];
+    description?: string;
 }
 
 interface Types {
