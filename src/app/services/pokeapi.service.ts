@@ -27,10 +27,14 @@ export class PokeapiService {
     return this.http.get<PokemonListarResumoDto>(`${this.baseUrl}/pokemon/${nome}`)
   }
 
-  listarAll(): Observable<PokemonListarResumoDto>{
+  listar(offset:number): Observable<PokemonListarResumoDto>{
     let params = new HttpParams()
+    let limit = 6
 
-    params = params.set('offset',0).set('limit',151)
+    if (offset>=150)   
+      limit = 1
+
+    params = params.set('offset',offset).set('limit',limit)
     
     return this.http.get<PokemonListarResumoDto>(`${this.baseUrl}/pokemon/`, { params });
   }
