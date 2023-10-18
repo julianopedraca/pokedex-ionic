@@ -3,21 +3,47 @@
 [isOpen]="isModalOpen"
 >
 <ng-template>
-  {{ pokemonData.types[0].type.name }}-type
     <ion-header>
       <ion-toolbar>
-        <ion-title>{{ pokemonData.name | uppercase }}</ion-title>
+        <ion-title>{{ pokemonData.name | titlecase }}</ion-title>
         <ion-buttons slot="end">
           <ion-button (click)="closeModal()">Close</ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="ion-padding teste {{ pokemonData.types[0].type.name }}-type" >
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum quidem recusandae ducimus quos
-        reprehenderit. Veniam, molestias quos, dolorum consequuntur nisi deserunt omnis id illo sit cum qui. Eaque,
-        dicta.
+    <div class="pokemon-img-container {{ pokemonData.types[0].type.name }}">
+      <div class="pokemon-pixel-img-container">
+        <ion-img class="pokemon-pixel-img" src="{{ pokemonData.spritesPixel}}" alt="{{ pokemonData.name }}-pixel-img"></ion-img>
+        <div class="pokemon-pixel-img-bg"></div>
+      </div>
+      <ion-img class="pokemon-img  {{ pokemonData.types[0].type.name }}" src="{{ pokemonData.sprites}}" alt="{{ pokemonData.name }}-img"></ion-img>
+      <div class="type-container">
+        type:
+        <span class="type-info" *ngFor="let pokemonType of pokemonData.types">
+          {{ pokemonType.type.name }}
+        </span>,
+        <span class="height"> height: {{ pokemonData.height }}m,</span>
+        <span class="weight"> weight: {{ pokemonData.weight }}kg</span>
+      </div>
+    </div>
+    <ion-content class="ion-padding {{ pokemonData.types[0].type.name }}-type" >
+      <div class="pokemon-title">
+        <h2 style="font-weight: bolder;">{{ pokemonData.name | titlecase }}</h2>
+        <h2>{{pokemonData.id}}</h2>
+      </div>
+      <div class="stats-container">
+        <span class="stats"><ion-label><ion-icon name="heart-outline"></ion-icon><br/>Hp:<br/>{{ pokemonData.stats[0].base_stat }}</ion-label></span>
+        <span class="stats"><ion-label><ion-icon name="chevron-forward-outline"></ion-icon><br/>Attack:<br/>{{ pokemonData.stats[1].base_stat }}</ion-label></span>
+        <span class="stats"><ion-label><ion-icon name="shield-outline"></ion-icon><br/>Defense:<br/>{{ pokemonData.stats[2].base_stat }}</ion-label></span>
+        <span class="stats"><ion-label><ion-icon name="flash-outline"></ion-icon><br/>Speed:<br/>{{ pokemonData.stats[3].base_stat }}</ion-label></span>
+        <span class="stats"><ion-label><ion-icon name="star-sharp"></ion-icon><br/>Special Attack:<br/>{{ pokemonData.stats[4].base_stat }}</ion-label></span>
+        <span class="stats"><ion-label><ion-icon name="shield"></ion-icon><br/>Special Defense:<br/>{{ pokemonData.stats[5].base_stat }}</ion-label></span>
+      </div>
+      <hr>
+      <p class="description">
+        {{ pokemonData.description }}
       </p>
+      <hr>
     </ion-content>
   </ng-template>
 </ion-modal>

@@ -12,6 +12,7 @@ export interface PokemonListarResumoDto {
             }
         }
     };
+    stats: [];
     types: [];
     flavor_text_entries: []
 }

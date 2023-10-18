@@ -6,6 +6,7 @@ export interface PokemonDto {
     spritesPixel:string;
     sprites: string;
     types: Types[];
+    stats: Stat[];
     description?: string;
 }
 
@@ -15,4 +16,11 @@ interface Types {
         name: string;
         url: string;
     };
+}
+
+interface Stat {
+    base_stat: number,
+    stat: {
+        name: string
+    }
 }

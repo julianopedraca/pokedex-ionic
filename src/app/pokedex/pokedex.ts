@@ -28,6 +28,7 @@ export class Pokedex implements OnInit {
     types: [],
     spritesPixel: '',
     description: '',
+    stats: []
   };
 
   loading = true;
@@ -51,18 +52,21 @@ export class Pokedex implements OnInit {
           this.pokeapiService.buscarPokemonData(pokemonUrl.url)
         ),
         mergeMap((pokemonData: any) => {
+          console.log(pokemonData);
+          
           const pokeData = pokemonData as PokemonListarResumoDto;
 
           return this.pokeapiService.buscarPokemonDescricao(pokeData.id).pipe(
             map((description: any) => ({
               id: pokeData.id,
               name: pokeData.name,
-              weight: pokeData.weight,
+              weight: pokeData.weight/10,
               spritesPixel: pokeData.sprites.front_default,
               sprites: pokeData.sprites.other.dream_world.front_default,
-              height: pokeData.height,
+              height: pokeData.height/10,
               types: pokeData.types,
-              description: description.flavor_text_entries[0].flavor_text, // Set the description here
+              stats: pokeData.stats,
+              description: description.flavor_text_entries[0].flavor_text.replace(/[\n\f]/g, ' '), // Set the description here
             }))
           );
         }),
@@ -93,12 +97,13 @@ export class Pokedex implements OnInit {
           map((description: any) => ({
             id: res.id,
             name: res.name,
-            weight: res.weight,
+            weight: res.weight/10,
             spritesPixel: res.sprites.front_default,
             sprites: res.sprites.other.dream_world.front_default,
-            height: res.height,
+            height: res.height/10,
             types: res.types,
-            description: description.flavor_text_entries[0].flavor_text
+            stats: res.stats,
+            description: description.flavor_text_entries[0].flavor_text.replace(/[\n\f]/g, ' ')
           }))
         );
       })

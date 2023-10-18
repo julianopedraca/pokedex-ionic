@@ -20,7 +20,8 @@ export class ModalComponent  implements OnInit {
     sprites: '',
     types: [],
     spritesPixel: '',
-    description: ''
+    description: '',
+    stats: []
   }
 
   @Output()

@@ -1,55 +1,316 @@
-// Define colors for Pokémon types
-$normal-color: #a8a878;
-$fire-color: #f08030;
-$water-color: #6890f0;
-$grass-color: #78c850;
-$electric-color: #f8d030;
-$ice-color: #98d8d8;
-$fighting-color: #e57373;
-$poison-color: #a040a0;
-$ground-color: #e0c068;
-$flying-color: #a890f0;
-$psychic-color: #f85888;
-$bug-color: #a8b820;
-$rock-color: #b8a038;
-$ghost-color: #705898;
-$dark-color: #705848;
-$steel-color: #b8b8d0;
-$fairy-color: #ee99ac;
-
-// Map Pokémon types to their respective colors
-$type-colors: (
-    normal: $normal-color,
-    fire: $fire-color,
-    water: $water-color,
-    grass: $grass-color,
-    electric: $electric-color,
-    ice: $ice-color,
-    fighting: $fighting-color,
-    poison: $poison-color,
-    ground: $ground-color,
-    flying: $flying-color,
-    psychic: $psychic-color,
-    bug: $bug-color,
-    rock: $rock-color,
-    ghost: $ghost-color,
-    dark: $dark-color,
-    steel: $steel-color,
-    fairy: $fairy-color,
-);
-
-// Function to get the color for a specific type
-@function get-type-color($type) {
-    @return map-get($type-colors, $type);
+.normal-type {
+    --background: #a8a878;
 }
 
-@each $type, $color in $type-colors {
-    .#{$type}-type {
-        --background: #78c850;
-        color: white;
-    }
+.fire-type {
+    --background: #f08030;
 }
 
-// .grass-type {
-//     --background: #78c850
-// }
+.water-type {
+    --background: #6890f0;
+}
+
+.grass-type {
+    --background: #78c850;
+}
+
+.electric-type {
+    --background: #f8d030;
+}
+
+.ice-type {
+    --background: #98d8d8;
+}
+
+.fighting-type {
+    --background: #e57373;
+}
+
+.poison-type {
+    --background: #a040a0;
+}
+
+.ground-type {
+    --background: #e0c068;
+}
+
+.flying-type {
+    --background: #a890f0;
+}
+
+.psychic-type {
+    --background: #f85888;
+}
+
+.bug-type {
+    --background: #a8b820;
+}
+
+.rock-type {
+    --background: #b8a038;
+}
+
+.ghost-type {
+    --background: #705898;
+}
+
+.dark-type {
+    --background: #705848;
+}
+
+.dragon-type {
+    --backgroun: #AFAFAF;
+}
+
+.steel-type {
+    --background: #b8b8d0;
+}
+
+.fairy-type {
+    --background: #ee99ac;
+}
+
+.pokemon-img-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20rem;
+
+    position: relative;
+}
+
+.pokemon-pixel-img-container {
+    position: absolute;
+    top: 6px;
+    left: 19px;
+    width: 9rem;
+}
+
+.pokemon-pixel-img {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    object-fit: scale-down;
+    background-color: white;
+}
+
+.pokemon-img-container.normal {
+    background-color: #a8a878;
+}
+
+.pokemon-img-container.fire {
+    background-color: #f08030;
+}
+
+.pokemon-img-container.water {
+    background-color: #6890f0;
+}
+
+.pokemon-img-container.grass {
+    background-color: #78c850;
+}
+
+.pokemon-img-container.electric {
+    background-color: #f8d030;
+}
+
+.pokemon-img-container.ice {
+    background-color: #98d8d8;
+}
+
+.pokemon-img-container.fighting {
+    background-color: #e57373;
+}
+
+.pokemon-img-container.poison {
+    background-color: #a040a0;
+}
+
+.pokemon-img-container.ground {
+    background-color: #e0c068;
+}
+
+.pokemon-img-container.flying {
+    background-color: #a890f0;
+}
+
+.pokemon-img-container.psychic {
+    background-color: #f85888;
+}
+
+.pokemon-img-container.bug {
+    background-color: #a8b820;
+}
+
+.pokemon-img-container.rock {
+    background-color: #b8a038;
+}
+
+.pokemon-img-container.ghost {
+    background-color: #705898;
+}
+
+.pokemon-img-container.dark {
+    background-color: #705848;
+}
+
+.pokemon-img-container.steel {
+    background-color: #b8b8d0;
+}
+
+.pokemon-img-container.fairy {
+    background-color: #ee99ac;
+}
+
+hr {
+    background: white;
+    width: 100%;
+    height: 2px;
+}
+
+.type-container {
+    background: linear-gradient(to right, #ffd700, #ffaf00);
+    width: 81%;
+    margin-top: 2px;
+    color: black;
+    font-style: oblique;
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 0.2rem;
+}
+
+.type-info {
+    color: black;
+    font-style: oblique;
+}
+
+.height {
+    color: black;
+    font-style: oblique;
+}
+
+.weight {
+    color: black;
+    font-style: oblique;
+}
+
+.pokemon-img {
+    height: 15rem;
+    width: 20rem;
+    border: 4px solid;
+    border-image: linear-gradient(to right, #ffd700, #ffaf00);
+    border-image-slice: 1;
+    padding: 15px;
+    /* Adjust as needed */
+    text-align: center;
+    /* Center text within the border */
+    font-size: 18px;
+    /* Adjust as needed */
+    font-weight: bold;
+    /* Adjust as needed */
+    color: #333;
+    /* Text color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.pokemon-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.stats-container {
+    height: 2rem;
+    width: 2rem;
+    background-color: rgba($color: #eaeaea, $alpha: 0.5);
+    width: 100%;
+    height: 70%;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // Two columns with equal width
+    gap: 20px; // Adjust the gap between columns
+
+    font-weight: bold;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.description {
+    color: black;
+    font-style: oblique;
+    font-size: small;
+}
+
+.pokemon-img.normal {
+    background-color: #b2b2a1;
+}
+
+.pokemon-img.fire {
+    background-color: #ff944d;
+}
+
+.pokemon-img.water {
+    background-color: #4d94ff;
+}
+
+.pokemon-img.grass {
+    background-color: #66cc66;
+}
+
+.pokemon-img.electric {
+    background-color: #ffd700;
+}
+
+.pokemon-img.ice {
+    background-color: #99e6e6;
+}
+
+.pokemon-img.fighting {
+    background-color: #ff6666;
+}
+
+.pokemon-img.poison {
+    background-color: #cc66cc;
+}
+
+.pokemon-img.ground {
+    background-color: #d9b38c;
+}
+
+.pokemon-img.flying {
+    background-color: #809fff;
+}
+
+.pokemon-img.psychic {
+    background-color: #f85888;
+}
+
+.pokemon-img.bug {
+    background-color: #b2c248;
+}
+
+.pokemon-img.rock {
+    background-color: #c2aa71;
+}
+
+.pokemon-img.ghost {
+    background-color: #9966cc;
+}
+
+.pokemon-img.dark {
+    background-color: #996666;
+}
+
+.pokemon-img.steel {
+    background-color: #ccccff;
+}
+
+.pokemon-img.fairy {
+    background-color: #ff99b2;
+}
