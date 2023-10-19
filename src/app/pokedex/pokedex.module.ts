@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { Pokedex } from './pokedex';
 
-import { HomePageRoutingModule } from './pokedex-routing.module';
+import {  PokedexRoutingModule } from './pokedex-routing.module';
 import { PokemonCardComponent } from '@components/pokemon-card/pokemon-card.component';
 import { PaginatorComponent } from '@components/paginator/paginator.component';
 import { MissingPageComponent } from '@components/missing-page/missing-page.component';
@@ -17,7 +17,7 @@ import { ModalComponent } from '@components/modal/modal.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
+    PokedexRoutingModule,
   ],
   declarations: [
     Pokedex,
@@ -29,4 +29,4 @@ import { ModalComponent } from '@components/modal/modal.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
   
 })
-export class HomePageModule {}
+export class PokedexModule {}

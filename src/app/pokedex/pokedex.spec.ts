@@ -1,24 +1,35 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { PokeapiService } from '../services/pokeapi.service';
+import { PokemonDto } from '../dto/pokemon.dto';
+import { Pokedex } from './pokedex';
 
-import { HomePage } from './pokedex';
+import { mockpokemonmodal } from "./mock-pokemon-modal";
 
-describe('HomePage', () => {
-  let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
+describe('PokedexComponent', () => {
+  let component: Pokedex;
+  let fixture: ComponentFixture<Pokedex>;
+  let pokeapiService: jasmine.SpyObj<PokeapiService>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [HomePage],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
+  beforeEach(() => {
+    const pokeapiSpy = jasmine.createSpyObj('PokeapiService', ['listar', 'buscarPokemonData', 'buscarPokemon', 'buscarPokemonDescricao']);
 
-    fixture = TestBed.createComponent(HomePage);
+    TestBed.configureTestingModule({
+      declarations: [Pokedex],
+      providers: [{ provide: PokeapiService, useValue: pokeapiSpy }]
+    });
+
+    fixture = TestBed.createComponent(Pokedex);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    pokeapiService = TestBed.inject(PokeapiService) as jasmine.SpyObj<PokeapiService>;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+
+  it('should open modal with a pokemon', () => {
+    const mockPokemon: PokemonDto = mockpokemonmodal;
+    
+    component.openModal(mockPokemon);
+
+    expect(component.isModalOpen).toBe(true);
+    expect(component.pokemon).toEqual(mockPokemon);
   });
 });

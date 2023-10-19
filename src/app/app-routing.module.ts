@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./pokedex/pokedex.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pokedex/pokedex.module').then( m => m.PokedexModule)
   },
   {
     path: '',

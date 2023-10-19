@@ -7,8 +7,6 @@ import { PokeapiService } from 'src/app/services/pokeapi.service';
 export class FetchPokemonComponent {
   dto?: PokemonListarDto = {};
 
-  pokemonsAll: PokemonDto[] = [];
-
   pokemonsShow: PokemonDto[] = [];
 
   pokemon: PokemonDto = {
@@ -37,7 +35,6 @@ export class FetchPokemonComponent {
           this.pokeapiService.buscarPokemonData(pokemonUrl.url)
         ),
         mergeMap((pokemonData: any) => {
-          console.log(pokemonData);
           
           const pokeData = pokemonData as PokemonListarResumoDto;
 
@@ -57,13 +54,13 @@ export class FetchPokemonComponent {
         }),
         toArray(),
         map((pokemons: PokemonDto[]) => {
-          this.pokemonsAll = pokemons;
+          console.log(pokemons)
+          this.pokemonsShow = pokemons;
           return pokemons;
         })
       )
       .subscribe((poke: any) => {
-        console.log(poke);
-        this.pokemonsShow = this.pokemonsAll.slice(0, 6);
+        console.log(poke)    
         this.loading = false;
       });
   }
@@ -93,8 +90,6 @@ export class FetchPokemonComponent {
       })
     )
     .subscribe((pokemonWithDescription: any) => {
-      console.log(pokemonWithDescription);
-      
       this.pokemonsShow.push(pokemonWithDescription);
     });
   }

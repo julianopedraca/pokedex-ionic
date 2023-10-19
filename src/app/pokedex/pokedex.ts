@@ -12,11 +12,11 @@ register();
 })
 export class Pokedex extends FetchPokemonComponent implements OnInit{
 
-  public currentPage: number = 1;
+  currentPage: number = 1;
 
-  public isModalOpen: boolean = false;
+  isModalOpen: boolean = false;
 
-  constructor(public override pokeapiService: PokeapiService) {
+  constructor(override pokeapiService: PokeapiService) {
     super(pokeapiService);
   }
 
@@ -32,6 +32,7 @@ export class Pokedex extends FetchPokemonComponent implements OnInit{
 
   openModal(pokemon: PokemonDto) {
     this.pokemon = pokemon;
+    console.log(pokemon);
     this.isModalOpen = true;
   }
 }

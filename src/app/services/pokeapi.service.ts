@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { createHttpParams } from '../utils/http-utils';
 
-import { PokemonListarDto } from '../dto/pokemon-listar.dto';
 import { PokemonListarResumoDto } from '../dto/pokemon-listar-resumo.dto';
 
 @Injectable({
