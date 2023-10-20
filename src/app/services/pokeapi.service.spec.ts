@@ -3,10 +3,10 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 
 import { PokeapiService } from './pokeapi.service';
 
-import { mockfetchpokemondata } from "./mocks/mock-fetch-pokemon-data";
-import { mocksearchpokemondescription } from "./mocks/mock-search-pokemon-description";
-import { mocksearchpokemon } from "./mocks/mock-search-pokemon";
-import { mocklistpokemon } from "./mocks/mock-list-pokemon";
+import { mockfetchpokemondata } from "../mocks/mock-fetch-pokemon-data";
+import { mocksearchpokemondescription } from "../mocks/mock-search-pokemon-description";
+import { mocksearchpokemon } from "../mocks/mock-search-pokemon";
+import { mocklistpokemon } from "../mocks/mock-list-pokemon";
 
 describe('PokeapiService', () => {
   let service: PokeapiService;

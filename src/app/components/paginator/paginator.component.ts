@@ -19,7 +19,6 @@ export class PaginatorComponent  implements OnInit {
   ngOnInit() {
     const pagesCount = Math.ceil(this.total / this.limit);
     this.pages = this.range(1, pagesCount);
-    console.log(this.pages)
   }
 
   range(start:number, end:number): number[]{

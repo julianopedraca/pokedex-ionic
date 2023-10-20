@@ -6,26 +6,22 @@
 
 <ion-content [fullscreen]="true">
   <ion-searchbar
-  placeholder="Search..."
-  [debounce]="300"
-  (ionInput)="searchPokemon($event)"
+    placeholder="Search..."
+    [debounce]="300"
+    (ionInput)="searchPokemon($event)"
   ></ion-searchbar>
 
   <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
-  
+
   <div *ngIf="!loading && pokemonsShow.length">
     <ion-grid>
-      <ion-row>
-        <ion-col *ngFor="let pokemon of pokemonsShow">
-          <pokemon-card [pokemon]="pokemon" (click)="openModal(pokemon)"></pokemon-card>
-        </ion-col>
-      </ion-row>
+      <ng-template [ngTemplateOutlet]="pokemonCards"></ng-template>
     </ion-grid>
     <paginator
-    [currentPage]="currentPage"
-    [limit]="6"
-    [total]="151"
-    (changePage)="changePage($event)"
+      [currentPage]="currentPage"
+      [limit]="6"
+      [total]="151"
+      (changePage)="changePage($event)"
     ></paginator>
   </div>
 
@@ -34,7 +30,24 @@
     [isModalOpen]="isModalOpen"
     (isModalOpenChange)="isModalOpen=$event"
   ></modal>
-  
-  <missing-page *ngIf="!pokemonsShow.length && !loading" ></missing-page>
 
+  <missing-page *ngIf="!pokemonsShow.length && !loading"></missing-page>
+
+    <ng-template #pokemonCards >
+      <ion-row>
+        <ion-col *ngFor="let pokemon of pokemonsShow">
+          <img
+          class="pokeball"
+          src="../../assets/icon/pokemon.svg"
+          alt="pokeball-img"
+          [class.favorite]="pokemon.isFavorite"
+          (click)="favoritesControl(pokemon)">
+          <pokemon-card
+            [pokemon]="pokemon"
+            (click)="openModal(pokemon)"
+          ></pokemon-card>
+        </ion-col>
+      </ion-row>
+    </ng-template>
+  
 </ion-content>

@@ -25,3 +25,16 @@
 #container a {
   text-decoration: none;
 }
+
+.pokeball {
+  position: absolute;
+  z-index: 1000;
+  height: 2rem;
+  width: 2rem;
+  right: 1.2rem;
+  filter: grayscale(100%);
+}
+
+.favorite {
+  filter: grayscale(0%);
+}

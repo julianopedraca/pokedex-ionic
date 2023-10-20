@@ -3,7 +3,7 @@ import { PokeapiService } from '../services/pokeapi.service';
 import { PokemonDto } from '../dto/pokemon.dto';
 import { Pokedex } from './pokedex';
 
-import { mockpokemonmodal } from "./mock-pokemon-modal";
+import { mockpokemonmodal } from "../mocks/mock-pokemon-modal";
 
 describe('PokedexComponent', () => {
   let component: Pokedex;

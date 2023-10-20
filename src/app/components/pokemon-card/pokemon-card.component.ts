@@ -10,11 +10,8 @@ export class PokemonCardComponent  implements OnInit {
 
   @Input() pokemon?: PokemonDto;
 
-  // @ViewChild('bulta') template: ;
-
   constructor() { }
 
   ngOnInit() {
   }
-  
 }

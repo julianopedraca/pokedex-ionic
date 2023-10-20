@@ -8,6 +8,7 @@ export interface PokemonDto {
     types: Types[];
     stats: Stat[];
     description?: string;
+    isFavorite?: boolean;
 }
 
 interface Types {

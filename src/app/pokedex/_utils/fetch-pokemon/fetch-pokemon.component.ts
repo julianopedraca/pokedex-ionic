@@ -18,8 +18,10 @@ export class FetchPokemonComponent {
     types: [],
     spritesPixel: '',
     description: '',
-    stats: []
+    stats: [],
   };
+
+  pokemonFavorites: PokemonDto[] = [];
 
   loading = true;
 
@@ -38,7 +40,7 @@ export class FetchPokemonComponent {
           
           const pokeData = pokemonData as PokemonListarResumoDto;
 
-          return this.pokeapiService.buscarPokemonDescricao(pokeData.id).pipe(
+          return this.pokeapiService.buscarPokemonDescricao(pokeData.id).pipe(            
             map((description: any) => ({
               id: pokeData.id,
               name: pokeData.name,
@@ -48,19 +50,18 @@ export class FetchPokemonComponent {
               height: pokeData.height/10,
               types: pokeData.types,
               stats: pokeData.stats,
-              description: description.flavor_text_entries[0].flavor_text.replace(/[\n\f]/g, ' '), // Set the description here
+              description: description.flavor_text_entries[0].flavor_text.replace(/[\n\f]/g, ' '),
+              isFavorite: !!this.pokemonFavorites.find((fav) => fav.id === pokeData.id)
             }))
           );
         }),
         toArray(),
         map((pokemons: PokemonDto[]) => {
-          console.log(pokemons)
           this.pokemonsShow = pokemons;
           return pokemons;
         })
       )
       .subscribe((poke: any) => {
-        console.log(poke)    
         this.loading = false;
       });
   }
@@ -84,7 +85,8 @@ export class FetchPokemonComponent {
             height: res.height/10,
             types: res.types,
             stats: res.stats,
-            description: description.flavor_text_entries[0].flavor_text.replace(/[\n\f]/g, ' ')
+            description: description.flavor_text_entries[0].flavor_text.replace(/[\n\f]/g, ' '),
+            isFavorite: !!this.pokemonFavorites.find((fav) => fav.id === res.id)
           }))
         );
       })

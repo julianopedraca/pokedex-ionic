@@ -32,7 +32,27 @@ export class Pokedex extends FetchPokemonComponent implements OnInit{
 
   openModal(pokemon: PokemonDto) {
     this.pokemon = pokemon;
-    console.log(pokemon);
     this.isModalOpen = true;
   }
+
+  favoritesControl(pokemon: PokemonDto){
+    const pokeIndex = this.pokemonFavorites.findIndex((el) => el === pokemon)
+    if (pokeIndex < 0){
+      pokemon.isFavorite = true
+      this.pokemonFavorites.push(pokemon)      
+      console.log(pokemon);
+      
+      return
+    }
+
+    pokemon.isFavorite = false
+    this.pokemonFavorites.splice(pokeIndex,1)
+    console.log(pokemon);
+
+  }
+
+  isFavorite(pokemon: PokemonDto): boolean {
+    return this.pokemonFavorites.some((fav) => fav === pokemon);
+  }
+    
 }
