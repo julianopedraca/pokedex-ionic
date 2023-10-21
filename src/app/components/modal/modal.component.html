@@ -32,12 +32,30 @@
         <h2>{{pokemonData.id}}</h2>
       </div>
       <div class="stats-container">
-        <span class="stats"><ion-label><ion-icon name="heart-outline"></ion-icon><br/>Hp:<br/>{{ pokemonData.stats[0].base_stat }}</ion-label></span>
-        <span class="stats"><ion-label><ion-icon name="chevron-forward-outline"></ion-icon><br/>Attack:<br/>{{ pokemonData.stats[1].base_stat }}</ion-label></span>
-        <span class="stats"><ion-label><ion-icon name="shield-outline"></ion-icon><br/>Defense:<br/>{{ pokemonData.stats[2].base_stat }}</ion-label></span>
-        <span class="stats"><ion-label><ion-icon name="flash-outline"></ion-icon><br/>Speed:<br/>{{ pokemonData.stats[3].base_stat }}</ion-label></span>
-        <span class="stats"><ion-label><ion-icon name="star-sharp"></ion-icon><br/>Special Attack:<br/>{{ pokemonData.stats[4].base_stat }}</ion-label></span>
-        <span class="stats"><ion-label><ion-icon name="shield"></ion-icon><br/>Special Defense:<br/>{{ pokemonData.stats[5].base_stat }}</ion-label></span>
+        <div class="stats {{ pokemonData.types[0].type.name }}">
+          <span><ion-icon name="heart-outline"></ion-icon>Hp:</span>
+          <span>{{ pokemonData.stats[0].base_stat }}</span>
+        </div>
+        <div class="stats {{ pokemonData.types[0].type.name }}">
+          <span><ion-icon name="chevron-forward-outline"></ion-icon>Attack:</span>
+          <span>{{ pokemonData.stats[1].base_stat }}</span>
+        </div>
+        <div class="stats {{ pokemonData.types[0].type.name }}">
+          <span><ion-icon name="shield-outline"></ion-icon>Defense:</span>
+          <span>{{ pokemonData.stats[2].base_stat }}</span>
+        </div>
+        <div class="stats {{ pokemonData.types[0].type.name }}">
+          <span><ion-icon name="flash-outline"></ion-icon>Speed:</span>
+          <span>{{ pokemonData.stats[3].base_stat }}</span>
+        </div>
+        <div class="stats {{ pokemonData.types[0].type.name }}">
+          <span><ion-icon name="star-sharp"></ion-icon>Special Attack:</span>
+          <span>{{ pokemonData.stats[4].base_stat }}</span>
+        </div>
+        <div class="stats {{ pokemonData.types[0].type.name }}">
+          <span><ion-icon name="shield"></ion-icon>Special Defense:</span>
+          <span>{{ pokemonData.stats[5].base_stat }}</span>
+        </div>
       </div>
       <hr>
       <p class="description">

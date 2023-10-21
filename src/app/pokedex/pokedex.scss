@@ -26,15 +26,34 @@
   text-decoration: none;
 }
 
+.pokemoncard-container {
+  position:relative
+}
+
 .pokeball {
   position: absolute;
   z-index: 1000;
   height: 2rem;
   width: 2rem;
-  right: 1.2rem;
+  top: -0.5rem;
   filter: grayscale(100%);
 }
 
 .favorite {
   filter: grayscale(0%);
+}
+
+ion-fab-button {
+  --background: #F5DCE0;
+  --background-activated: #E4A0B7;
+  --background-hover: #E4A0B7;
+  --box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --color: #E18AAA;
+}
+
+ion-badge {
+  --background: #E4A0B7;
+  --color: white;
+  --padding-end: 5px;
+  --padding-start: 5px;
 }

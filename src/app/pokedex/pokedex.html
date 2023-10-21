@@ -17,6 +17,7 @@
     <ion-grid>
       <ng-template [ngTemplateOutlet]="pokemonCards"></ng-template>
     </ion-grid>
+
     <paginator
       [currentPage]="currentPage"
       [limit]="6"
@@ -33,21 +34,37 @@
 
   <missing-page *ngIf="!pokemonsShow.length && !loading"></missing-page>
 
-    <ng-template #pokemonCards >
-      <ion-row>
-        <ion-col *ngFor="let pokemon of pokemonsShow">
+  <ion-fab
+    slot="fixed"
+    horizontal="end"
+    vertical="bottom"
+    (click)="showFavorites()"
+    >
+    <ion-badge
+    style="left: -5px; z-index: 3; position: absolute;">{{ pokemonFavorites.length }}</ion-badge>
+    <ion-fab-button>
+      <ion-icon name="heart-sharp"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+</ion-content>
+
+  <ng-template #pokemonCards>
+    <ion-row>
+      <ion-col *ngFor="let pokemon of pokemonsShow">
+        <div class="pokemoncard-container">
           <img
-          class="pokeball"
-          src="../../assets/icon/pokemon.svg"
-          alt="pokeball-img"
-          [class.favorite]="pokemon.isFavorite"
-          (click)="favoritesControl(pokemon)">
+            class="pokeball"
+            src="../../assets/icon/pokemon.svg"
+            alt="pokeball-img"
+            [class.favorite]="pokemon.isFavorite"
+            (click)="favoritesControl(pokemon)"
+          />
           <pokemon-card
             [pokemon]="pokemon"
             (click)="openModal(pokemon)"
           ></pokemon-card>
-        </ion-col>
-      </ion-row>
-    </ng-template>
-  
-</ion-content>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ng-template>

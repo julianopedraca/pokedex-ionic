@@ -52,16 +52,25 @@ $type-colors: (
     }
 }
 
+.id {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-style: oblique;
+    font-weight: lighter;
+    font-size: small;
+}
+
 .pokemon-card {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     border-radius: 10px;
     height: 16rem;
     justify-content: center;
+    align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-    max-width: 9rem;
+    width: 8rem;
 }
 
 .pokemon-image {
@@ -70,9 +79,12 @@ $type-colors: (
     object-fit: fill;
 }
 
-ion-card-title,
+ion-card-title {
+    font-size: 1rem;
+}
 ion-card-subtitle {
-    font-size: 1.5rem;
+    font-size: 0.6rem;
+    color: white;
 }
 
 ion-card-content {

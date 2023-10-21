@@ -16,6 +16,10 @@ export class Pokedex extends FetchPokemonComponent implements OnInit{
 
   isModalOpen: boolean = false;
 
+  tempPokemonFavorite: PokemonDto[] = [];
+
+  isFavorite: boolean = false;
+
   constructor(override pokeapiService: PokeapiService) {
     super(pokeapiService);
   }
@@ -51,8 +55,17 @@ export class Pokedex extends FetchPokemonComponent implements OnInit{
 
   }
 
-  isFavorite(pokemon: PokemonDto): boolean {
-    return this.pokemonFavorites.some((fav) => fav === pokemon);
+  showFavorites(){
+    if (!this.isFavorite) {
+      this.tempPokemonFavorite = this.pokemonsShow
+      this.pokemonsShow = this.pokemonFavorites
+      this.isFavorite = true
+      return
+    }
+    if (this.isFavorite){
+      this.pokemonsShow = this.tempPokemonFavorite
+      this.isFavorite = false
+    }
   }
     
 }
