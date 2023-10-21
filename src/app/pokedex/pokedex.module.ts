@@ -9,7 +9,7 @@ import { PokemonCardComponent } from '@components/pokemon-card/pokemon-card.comp
 import { PaginatorComponent } from '@components/paginator/paginator.component';
 import { MissingPageComponent } from '@components/missing-page/missing-page.component';
 import { ModalComponent } from '@components/modal/modal.component';
-
+ 
 
 
 @NgModule({

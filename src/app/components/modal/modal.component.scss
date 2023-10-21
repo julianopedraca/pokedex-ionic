@@ -59,7 +59,7 @@
 }
 
 .dragon-type {
-    --backgroun: #AFAFAF;
+    --background: #AFAFAF;
 }
 
 .steel-type {
@@ -149,6 +149,10 @@
 
 .pokemon-img-container.ghost {
     background-color: #705898;
+}
+
+.pokemon-img-container.dragon {
+    background-color: #AFAFAF;
 }
 
 .pokemon-img-container.dark {
@@ -373,6 +377,10 @@ hr {
 
 .stats.dark {
     background-color: #996666;
+}
+
+.stats.dragon {
+    background-color: #AFAFAF;
 }
 
 .stats.steel {
